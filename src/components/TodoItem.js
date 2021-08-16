@@ -1,7 +1,17 @@
 import React from 'react'
 
-function TodoItem({ todo }) {
-  return <li>{todo.title}</li>
+const TodoItem = ({ todo, handleChangeProps, deleteTodoProps }) => {
+  return (
+    <li>
+    <input 
+      type="checkbox" 
+      checked={todo.completed}
+      onChange={ () => handleChangeProps(todo.id) }
+    />  
+      {todo.title}
+    <button onClick={ () => deleteTodoProps(todo.id) }>Delete</button>
+    </li>
+  )
 }
 
 export default TodoItem;
