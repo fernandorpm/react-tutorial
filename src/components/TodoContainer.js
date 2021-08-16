@@ -51,16 +51,28 @@ const TodoContainer = () => {
     setTodos([...todos, newTodo]);
   }
 
+  const setUpdate = (updatedTitle, id) => {
+    setTodos(todos.map(todo => {
+      if (todo.id === id) {
+        todo.title = updatedTitle
+      }
+      return todo
+    }));
+  }
+
   return (
-    <>
-      <Header />
-      <InputTodo addTodoProps={addTodo} />
-      <TodosList 
-        todos={todos}
-        handleChangeProps={handleChange}
-        deleteTodoProps={deleteTodo}
-      />
-    </>
+    <div className="container">
+      <div className="inner">
+        <Header />
+        <InputTodo addTodoProps={addTodo} />
+        <TodosList 
+          todos={todos}
+          handleChangeProps={handleChange}
+          deleteTodoProps={deleteTodo}
+          setUpdateProps={setUpdate}
+        />
+      </div>
+    </div>
   )
 }
 export default TodoContainer
